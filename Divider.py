@@ -42,3 +42,4 @@ btn = tkinter.Button(root, text='계산', font=('맑은고딕', 10), command=btn
 btn.place(x=186, y=20, width= 54, height= 48)
 
 root.mainloop()
+
