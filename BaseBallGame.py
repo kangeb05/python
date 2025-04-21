@@ -20,29 +20,39 @@ def click_btnCheck():
     count += 1                                  #시도 횟수 증가
     successGame = False                         #성공 여부 확인 변수
     #-------------------과제 영역 시작-----------------------#
-
     strike = 0
     ball = 0
     guess = entryLec1.get() + entryLec2.get() + entryLec3.get()
 
-    for i in range(3):
-        if guess[i] == answer[i]:
-            strike += 1
-        elif guess[i] in answer: 
-            ball += 1
+    # 첫 번째 숫자 판정
+    if guess[0] == answer[0]:
+        strike += 1
+    elif guess[0] == answer[1] or guess[0] == answer[2]:
+        ball += 1
 
-    #정답인 경우 successGame를 참으로 지정
+    # 두 번째 숫자 판정
+    if guess[1] == answer[1]:
+        strike += 1
+    elif guess[1] == answer[0] or guess[1] == answer[2]:
+        ball += 1
+
+    # 세 번째 숫자 판정
+    if guess[2] == answer[2]:
+        strike += 1
+    elif guess[2] == answer[0] or guess[2] == answer[1]:
+        ball += 1
+
+    # 성공공 여부 확인
     if strike == 3:
-        successGame =  True
+        successGame = True
 
-    #스트라이크, 볼 모두 0일 떄 아웃
+    # 결과 출력
     if strike == 0 and ball == 0:
-        output_str = 'OUT'
+        output_str = "OUT"
     else:
-        output_str = str(strike)+'S '+str(ball)+'B'
+        output_str = str(strike)+"S "+str(ball)+"B"
 
-
-    btnCheck["text"] = (output_str)
+    btnCheck["text"] = output_str
     
     #------------------- 과제 영역 끝 -----------------------#
 
